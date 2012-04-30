@@ -22,4 +22,12 @@ class Utilidades{
       return resultado;
   }
   }
+  
+  void teste(){
+    if(potencia(2,5) == 32) System.out.println("O metodo potencia funciona!");
+    else System.out.println("O método potencia nao funciona!");
+    
+    if(fatorial(5) == 120) System.out.println("O metodo fatorial funciona!");
+    else System.out.println("O método fatorial nao funciona!");
+  }
 }
