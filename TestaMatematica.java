@@ -51,6 +51,54 @@ class TestaMatematica{
     
     imprimeRelatorio("cosseno", desvioPadrao, mediaExec);
   }
+  
+   void testaCosseno2(){    
+    double tempoInicio = 0;
+    double tempoFim = 0;
+    double soma = 0;
+    double somaQuadrado = 0;
+    double tempoExec = 0;
+    
+    for(int exec = 1; exec != 100; exec++){
+      tempoInicio = System.nanoTime();
+      m.cos(3.14159);
+      tempoFim = System.nanoTime();
+      tempoExec = tempoFim - tempoInicio;
+      soma += tempoExec;
+      somaQuadrado += tempoExec*tempoExec;
+    }
+    
+    double mediaExec = soma/100;
+    double variancia = somaQuadrado/100 - mediaExec*mediaExec;
+    double desvioPadrao =  Math.sqrt(variancia);
+    
+    imprimeRelatorio("cosseno com Taylor", desvioPadrao, mediaExec);
+  }
+  
+   void testaSeno2(){    
+    double tempoInicio = 0;
+    double tempoFim = 0;
+    double soma = 0;
+    double somaQuadrado = 0;
+    double tempoExec = 0;
+    
+    for(int exec = 1; exec != 100; exec++){
+      tempoInicio = System.nanoTime();
+      m.seno(3.14159);
+      tempoFim = System.nanoTime();
+      tempoExec = tempoFim - tempoInicio;
+      soma += tempoExec;
+      somaQuadrado += tempoExec*tempoExec;
+    }
+    
+    double mediaExec = soma/100;
+    double variancia = somaQuadrado/100 - mediaExec*mediaExec;
+    double desvioPadrao =  Math.sqrt(variancia);
+    
+    imprimeRelatorio("seno com Taylor", desvioPadrao, mediaExec);
+    
+    
+  }
  
   void testaLogaritmo(){    
     double tempoInicio = 0;
@@ -98,9 +146,13 @@ class TestaMatematica{
     imprimeRelatorio("raiz quadrada", desvioPadrao, mediaExec);
   }
   
+  
+  
   void testaMatematica(){
     testaSeno();
+    testaSeno2();
     testaCosseno();
+    testaCosseno2();
     testaLogaritmo();
     testaRaizQuadrada();
   }
@@ -125,7 +177,7 @@ class TestaMatematica{
     double somaDouble = 0;
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
-      m.senoR(3.14159);
+      m.senoR(3);
       tempoFim = System.nanoTime();
       tempoExec = tempoFim - tempoInicio;
       somaDouble += tempoExec;      
@@ -133,9 +185,9 @@ class TestaMatematica{
     
     double mediaExecDouble = somaDouble/100;
     
-    diferencaDesempenho = (mediaExecFloat/mediaExecDouble)*100;
+    diferencaDesempenho = (1 -mediaExecFloat/mediaExecDouble)*100;
     System.out.println("O ganho de desmpenho percentual usando-se float para o calculo do seno foi de " +diferencaDesempenho +"%");   
-    
+    // possiveis problemas na definicao de ganho percentual;
   }
 }
   
