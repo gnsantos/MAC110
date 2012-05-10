@@ -69,6 +69,18 @@ class Matematica{
     return seno;
   }
   
+  float senoRFloat(float x){
+    float seno = x;
+    float elemento = 1;
+    
+    for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
+      elemento *= (-1)*x*x/(cont*(cont-1));
+      seno += elemento;
+    }
+    
+    return seno;
+  }
+  
   double cossenoR(double x){
     double cosseno = 1;
     double elemento = x;
