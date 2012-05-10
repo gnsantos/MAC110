@@ -2,7 +2,7 @@ class Matematica{
   
   double precisao = 1.0e - 8;
   
-  double deifnePrecisao(double epsilon){
+  double definePrecisao(double epsilon){
     precisao = epsilon;
   }
 
