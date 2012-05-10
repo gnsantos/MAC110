@@ -3,7 +3,7 @@ class TestaMatematica{
   Matematica m = new Matematica();
   
   void imprimeRelatorio(String nome, double desvioPadrao, double media){
-    System.out.println("Teste com " + nome + "\nDesvio Padrão = " + desvioPadrao + "\nTempo Médio de Execução = " + media);
+    System.out.println("Teste com " + nome + "\nDesvio Padrao = " + desvioPadrao + "\nTempo Medio de Execucao = " + media+"\n");
   }
   
   void testaSeno(){    
@@ -17,14 +17,14 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.senoR(3.14159);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
     
     double mediaExec = soma/100;
     double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  math.sqrt(variancia);
+    double desvioPadrao =  Math.sqrt(variancia);
     
     imprimeRelatorio("seno", desvioPadrao, mediaExec);
   }
@@ -40,14 +40,14 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.cossenoR(3.14159);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
     
     double mediaExec = soma/100;
     double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  math.sqrt(variancia);
+    double desvioPadrao =  Math.sqrt(variancia);
     
     imprimeRelatorio("cosseno", desvioPadrao, mediaExec);
   }
@@ -63,16 +63,16 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.ln(1.5);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
     
     double mediaExec = soma/100;
     double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  math.sqrt(variancia);
+    double desvioPadrao =  Math.sqrt(variancia);
     
-    imprimeRelatorio("logarítmo natural", desvioPadrao, mediaExec);
+    imprimeRelatorio("logaritmo natural", desvioPadrao, mediaExec);
   }
  
   void testaRaizQuadrada(){    
@@ -86,14 +86,14 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.raizQuadrada(1.5);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
     
     double mediaExec = soma/100;
     double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  math.sqrt(variancia);
+    double desvioPadrao =  Math.sqrt(variancia);
     
     imprimeRelatorio("raiz quadrada", desvioPadrao, mediaExec);
   }
@@ -110,13 +110,13 @@ class TestaMatematica{
     double tempoFim = 0;
     double tempoExec = 0;
     double somaFloat = 0;
-    double diferençaDesempenh0 = 0;
+    double diferencaDesempenho = 0;
     
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
-      m.senoRFloat(3.14159);
+      m.senoRFloat(3);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       somaFloat += tempoExec;      
     }
     
@@ -127,14 +127,14 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.senoR(3.14159);
       tempoFim = System.nanoTime();
-      tempoExec = tempoInicio - tempoFim;
+      tempoExec = tempoFim - tempoInicio;
       somaDouble += tempoExec;      
     }
     
-    double mediaExexDouble = somaDoule/100;
+    double mediaExecDouble = somaDouble/100;
     
-    diferençaDesempenho = (mediaExecFloat/mediaExecDouble)*100;
-    System.out.println("O ganho de desmpenho percentual usando-se float para o calculo do seno foi de " +diferençaDesempenho +"%");   
+    diferencaDesempenho = (mediaExecFloat/mediaExecDouble)*100;
+    System.out.println("O ganho de desmpenho percentual usando-se float para o calculo do seno foi de " +diferencaDesempenho +"%");   
     
   }
 }
