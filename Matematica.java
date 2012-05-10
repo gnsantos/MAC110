@@ -62,11 +62,29 @@ class Matematica{
     double elemento = 1;
     
     for(int cont = 1; cont*cont > precisao*precisao; cont += 2){
-      elemento *= (-1)*x*x/(cont*(cont-1));
+      if(cont == 1)
+        elemento = x;
+      else
+        elemento *= (-1)*x*x/(cont*(cont-1));
       seno += elemento;
     }
+    
+    return seno;
+  }
+  
+  double cossenoR(double x){
+    double cosseno = 1;
+    double elemento = x;
+    
+    for(int cont = 2; cont*cont > precisao*precisao; cont++){      
+      elemento *= (-1)*x/cont;
+      cosseno += elemento;
+    }    
+    return cosseno;
   }
 }
+  
+
   
 
 
