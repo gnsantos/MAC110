@@ -59,10 +59,10 @@ class Matematica{
   
   double senoR(double x){
     double seno = x;
-    double elemento = 1;
+    double elemento = x;
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
-      elemento *= (-1)*x*x/(cont*(cont-1));
+      elemento *= ((-1)*x*x)/(cont*(cont+1));
       seno += elemento;
     }
     
@@ -71,10 +71,10 @@ class Matematica{
   
   float senoRFloat(float x){
     float seno = x;
-    float elemento = 1;
+    float elemento = x;
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
-      elemento *= (-1)*x*x/(cont*(cont-1));
+      elemento *= (-1)*x*x/(cont*(cont+1));
       seno += elemento;
     }
     
