@@ -1,8 +1,8 @@
 class Matematica{
   
-  double precisao = 1.0e - 8;
+  double precisao = 1.0E-8;
   
-  double definePrecisao(double epsilon){
+  void definePrecisao(double epsilon){
     precisao = epsilon;
   }
 
@@ -107,19 +107,19 @@ class Matematica{
   
   double raizQuadrada(double umMaisX)
   {
-    double x = umMaisX - 1
+    double x = umMaisX - 1;
     double sqrt = 0;
-    double elemento = 0;
+    double elemento = 1;
     
-    for(int n = 0; elemento*elemento > precisao*precisao; cont++){
+    for(int n = 0; elemento*elemento > precisao*precisao; n++){
       elemento = (potencia(x,n)*potencia((-1),n)*fatorial(2*n))/((1-2*n)*(potencia(fatorial(n),2))*(potencia(4,n)));
       sqrt +=elemento;
     }
-      
+      return sqrt;
   }
     
 }
-  
+
 
   
 
