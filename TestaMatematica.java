@@ -11,6 +11,7 @@ class TestaMatematica{
     double tempoFim = 0;
     double soma = 0;
     double somaQuadrado = 0;
+    double tempoExec = 0;
     
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
@@ -33,6 +34,7 @@ class TestaMatematica{
     double tempoFim = 0;
     double soma = 0;
     double somaQuadrado = 0;
+    double tempoExec = 0;
     
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
@@ -55,6 +57,7 @@ class TestaMatematica{
     double tempoFim = 0;
     double soma = 0;
     double somaQuadrado = 0;
+    double tempoExec = 0;
     
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
@@ -75,6 +78,7 @@ class TestaMatematica{
   void testaRaizQuadrada(){    
     double tempoInicio = 0;
     double tempoFim = 0;
+    double tempoExec = 0;
     double soma = 0;
     double somaQuadrado = 0;
     
@@ -99,6 +103,39 @@ class TestaMatematica{
     testaCosseno();
     testaLogaritmo();
     testaRaizQuadrada();
+  }
+  
+  void comparaSeno(){
+    double tempoInicio = 0;
+    double tempoFim = 0;
+    double tempoExec = 0;
+    double somaFloat = 0;
+    double diferençaDesempenh0 = 0;
+    
+    for(int exec = 1; exec != 100; exec++){
+      tempoInicio = System.nanoTime();
+      m.senoRFloat(3.14159);
+      tempoFim = System.nanoTime();
+      tempoExec = tempoInicio - tempoFim;
+      somaFloat += tempoExec;      
+    }
+    
+    double mediaExecFloat = somaFloat/100;
+    
+    double somaDouble = 0;
+    for(int exec = 1; exec != 100; exec++){
+      tempoInicio = System.nanoTime();
+      m.senoR(3.14159);
+      tempoFim = System.nanoTime();
+      tempoExec = tempoInicio - tempoFim;
+      somaDouble += tempoExec;      
+    }
+    
+    double mediaExexDouble = somaDoule/100;
+    
+    diferençaDesempenho = (mediaExecFloat/mediaExecDouble)*100;
+    System.out.println("O ganho de desmpenho percentual usando-se float para o calculo do seno foi de " +diferençaDesempenho +"%");   
+    
   }
 }
   
