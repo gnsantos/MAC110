@@ -58,14 +58,11 @@ class Matematica{
   }
   
   double senoR(double x){
-    double seno = 0;
+    double seno = x;
     double elemento = 1;
     
-    for(int cont = 1; cont*cont > precisao*precisao; cont += 2){
-      if(cont == 1)
-        elemento = x;
-      else
-        elemento *= (-1)*x*x/(cont*(cont-1));
+    for(int cont = 2; cont*cont > precisao*precisao; cont += 2){    
+      elemento *= (-1)*x*x/(cont*(cont-1));
       seno += elemento;
     }
     
@@ -82,6 +79,32 @@ class Matematica{
     }    
     return cosseno;
   }
+  
+  double ln(double umMaisX)
+  {
+    double x = umMaisX - 1;
+    double ln = x;
+    double elemento;
+    
+    for(int cont = 2; cont*cont > precisao*precisao; cont++){      
+      elemento *= (-1)*x/cont;
+      ln += elemento;
+    }    
+    return ln;    
+  }
+  
+  double raizQuadrada(double umMaisX)
+  {
+    double sqrt = 0;
+    double elemento = 0;
+    
+    for(int n = 0; n*n > precisao*precisao; cont++){
+      elemento = (potencia((-1),n)*fatorial(2*n))/((1-2*n)*(potencia(fatorial(n),2))*(potencia(4,n)));
+      sqrt +=elemento;
+    }
+      
+  }
+    
 }
   
 
