@@ -35,11 +35,11 @@ class Matematica{
     double elemento = 0;
     double k = 0;
        
-    while(k*k != precisao*precisao){
+    do{
     elemento = ((potencia(-1,k) * potencia(x,2*k)) / fatorial(2*k));
     cos = cos + elemento;
     k = k +1;
-    }   
+    } while(elemento*elemento > precisao*precisao);   
       
     return cos;
   }
@@ -49,11 +49,11 @@ class Matematica{
     double elemento = 0;
     double k = 0;
     
-    while(k*k != precisao*precisao){
+    do{
       elemento = potencia(x,2*k+1) * potencia(-1, k) / fatorial(2*k+1);
       seno = seno + elemento;
       k = k + 1;     
-    }
+    } while(elemento*elemento > precisao*precisao);
     return seno;
   }
   
@@ -61,7 +61,7 @@ class Matematica{
     double seno = x;
     double elemento = 1;
     
-    for(int cont = 2; cont*cont > precisao*precisao; cont += 2){    
+    for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
       elemento *= (-1)*x*x/(cont*(cont-1));
       seno += elemento;
     }
@@ -73,7 +73,7 @@ class Matematica{
     double cosseno = 1;
     double elemento = x;
     
-    for(int cont = 2; cont*cont > precisao*precisao; cont++){      
+    for(int cont = 2; elemento*elemento > precisao*precisao; cont++){      
       elemento *= (-1)*x/cont;
       cosseno += elemento;
     }    
@@ -84,9 +84,9 @@ class Matematica{
   {
     double x = umMaisX - 1;
     double ln = x;
-    double elemento;
+    double elemento = x;
     
-    for(int cont = 2; cont*cont > precisao*precisao; cont++){      
+    for(int cont = 2; elemento*elemento > precisao*precisao; cont++){      
       elemento *= (-1)*x/cont;
       ln += elemento;
     }    
@@ -95,11 +95,12 @@ class Matematica{
   
   double raizQuadrada(double umMaisX)
   {
+    double x = umMaisX - 1
     double sqrt = 0;
     double elemento = 0;
     
-    for(int n = 0; n*n > precisao*precisao; cont++){
-      elemento = (potencia((-1),n)*fatorial(2*n))/((1-2*n)*(potencia(fatorial(n),2))*(potencia(4,n)));
+    for(int n = 0; elemento*elemento > precisao*precisao; cont++){
+      elemento = (potencia(x,n)*potencia((-1),n)*fatorial(2*n))/((1-2*n)*(potencia(fatorial(n),2))*(potencia(4,n)));
       sqrt +=elemento;
     }
       
