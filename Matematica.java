@@ -83,10 +83,10 @@ class Matematica{
   
   double cossenoR(double x){
     double cosseno = 1;
-    double elemento = x;
+    double elemento = 1;
     
-    for(int cont = 2; elemento*elemento > precisao*precisao; cont++){      
-      elemento *= (-1)*x/cont;
+    for(int cont = 2; elemento*elemento > precisao*precisao; cont+=2){      
+      elemento *= (-1)*x*x/(cont*(cont-1));
       cosseno += elemento;
     }    
     return cosseno;
@@ -99,8 +99,8 @@ class Matematica{
     double elemento = x;
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont++){      
-      elemento *= (-1)*x/cont;
-      ln += elemento;
+      elemento *= (-1)*x;
+      ln += elemento/cont;
     }    
     return ln;    
   }
