@@ -23,8 +23,8 @@ class Matematica{
       while(contador != expoente){
         resultado = base*resultado;
         contador = contador + 1;
+      }
       return resultado;
-  }
   }
   
   double cos(double x){
@@ -105,12 +105,20 @@ class Matematica{
   double raizQuadrada(double umMaisX)
   {
     double x = umMaisX - 1;
-    double sqrt = 0;
+    double sqrt = 1;
     double elemento = 1;
+    double numerador=-1;
+    double denominador = 1;
     
-    for(int n = 0; elemento*elemento > precisao*precisao; n++){
+   /* for(int n = 0; elemento*elemento > precisao*precisao; n++){
       elemento = (potencia(x,n)*potencia((-1),n)*fatorial(2*n))/((1-2*n)*(potencia(fatorial(n),2))*(potencia(4,n)));
       sqrt +=elemento;
+    }*/
+    for(int n = 1; elemento*elemento > precisao*precisao; n++){
+      numerador = numerador*(2*(n-1)+2)*(2*(n-1)+1);
+      denominador = (denominador + 2*denominador/(1-(2*(n-1))))*(n)*(n)*4;
+      elemento=(numerador/denominador)*(-x);  
+      sqrt += elemento;
     }
       return sqrt;
   }
