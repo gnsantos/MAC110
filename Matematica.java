@@ -92,6 +92,8 @@ class Matematica{
   double ln(double umMaisX) 
   {
     double x = umMaisX - 1;
+    /*if (mod(x)>=1)
+      throw new Exception();*/
     double ln = x;
     double elemento = x;
     
@@ -126,10 +128,6 @@ class Matematica{
       return sqrt;
   }
   
-  double mod(double x){
-    if (x<0)
-      x=-x;
-    return x;}
 }
 
 
