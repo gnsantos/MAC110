@@ -166,7 +166,7 @@ class TestaMatematica{
     
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
-      m.senoRFloat(3);
+      m.senoRFloat(3.14f);
       tempoFim = System.nanoTime();
       tempoExec = tempoFim - tempoInicio;
       somaFloat += tempoExec;      
@@ -177,7 +177,7 @@ class TestaMatematica{
     double somaDouble = 0;
     for(int exec = 1; exec != 100; exec++){
       tempoInicio = System.nanoTime();
-      m.senoR(3);
+      m.senoR(3.14);
       tempoFim = System.nanoTime();
       tempoExec = tempoFim - tempoInicio;
       somaDouble += tempoExec;      
