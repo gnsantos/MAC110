@@ -71,7 +71,6 @@ class Matematica{
   float senoRFloat(float x){
     float seno = x;
     float elemento = x;
-    x=limitaNumero(x);
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
       elemento *= (-1)*x*x/(cont*(cont+1));
@@ -93,11 +92,11 @@ class Matematica{
     return cosseno;
   }
   
-  double ln(double umMaisX)  throws Exception
+  double ln(double umMaisX) /* throws Exception*/
   {
     double x = umMaisX - 1;
-    if (x*x>=1)
-      throw new Exception();
+   /* if (x*x>=1)
+      throw new Exception();*/
     double ln = x;
     double elemento = x;
     
