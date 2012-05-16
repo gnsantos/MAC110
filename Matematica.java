@@ -1,6 +1,6 @@
 class Matematica{
   
-  double precisao = 1.0E-8;
+  double precisao = 1.0E-8; /* Variavel que controla quantidade de casas de decimal de erro*/
   
   void definePrecisao(double epsilon){/*Calcula o numero de casas decimais dos resultados que começarão a se distanciar do valor correto*/
     precisao =1.0E-epsilon;
@@ -33,7 +33,7 @@ class Matematica{
     double k = 0;
     x= limitaNumero(x);
        
-    do{
+    do{/*Calcula cosseno com uso literal de taylor. Mais lento que cossenoR*/
     elemento = ((potencia(-1,k) * potencia(x,2*k)) / fatorial(2*k));
     cos = cos + elemento;
     k = k +1;
@@ -59,6 +59,7 @@ class Matematica{
   double senoR(double x){/*Calcula seno*/
     double seno = x;
     double elemento = x;
+    x=limitaNumero(x);
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
       elemento *= ((-1)*x*x)/(cont*(cont+1));
