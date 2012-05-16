@@ -2,11 +2,11 @@ class Matematica{
   
   double precisao = 1.0E-8;
   
-  void definePrecisao(double epsilon){
-    precisao = epsilon;
+  void definePrecisao(double epsilon){/*Calcula o numero de casas decimais dos resultados que começarão a se distanciar do valor correto*/
+    precisao =1.0E-epsilon;
   }
 
-   double fatorial(double numero){
+   double fatorial(double numero){/*Calcula Fatorial*/
     double x = numero;
     int contador = 1;
     if(numero == 0) return 1;
@@ -17,7 +17,7 @@ class Matematica{
     return x;
   }
   
-  double potencia(double base, double expoente){
+  double potencia(double base, double expoente){ /*Calcula potencia*/
     double resultado = 1;
     double contador = 0;
       while(contador != expoente){
@@ -27,7 +27,7 @@ class Matematica{
       return resultado;
   }
   
-  double cos(double x){
+  double cos(double x){ /*Calcula cosseno com uso literal de taylor. Mais lento que cossenoR*/
     double cos = 0;
     double elemento = 0;
     double k = 0;
@@ -42,7 +42,7 @@ class Matematica{
     return cos;
   }
   
-  double seno(double x){
+  double seno(double x){/*Calcula seno com uso literal de taylor. Mais lento que senoR*/
     double seno = 0;
     double elemento = 0;
     double k = 0;
@@ -56,7 +56,7 @@ class Matematica{
     return seno;
   }
   
-  double senoR(double x){
+  double senoR(double x){/*Calcula seno*/
     double seno = x;
     double elemento = x;
     
@@ -68,7 +68,7 @@ class Matematica{
     return seno;
   }
   
-  float senoRFloat(float x){
+  float senoRFloat(float x){/*Calcula Seno com variaveis float*/
     float seno = x;
     float elemento = x;
     
@@ -80,7 +80,7 @@ class Matematica{
     return seno;
   }
   
-  double cossenoR(double x){
+  double cossenoR(double x){ /*Calcula Cosseno*/
     double cosseno = 1;
     double elemento = 1;
     x=limitaNumero(x);
@@ -92,11 +92,9 @@ class Matematica{
     return cosseno;
   }
   
-  double ln(double umMaisX) /* throws Exception*/
+  double ln(double umMaisX) /*calcula ln de UmMaisX-1*/
   {
     double x = umMaisX - 1;
-   /* if (x*x>=1)
-      throw new Exception();*/
     double ln = x;
     double elemento = x;
     
@@ -107,20 +105,9 @@ class Matematica{
     return ln;    
   }
   
-  double raizQuadrada(double umMaisX)
+  double raizQuadrada(double umMaisX)/*calcula raiz quadrada de UmMaisX -1 */
   {
-   /* double x = umMaisX - 1;
-    double sqrt = 1;
-    double elemento = 1;
-    double numerador=-1;
-    double denominador = 1;*/   
-        
-   /* for(int n = 1; elemento*elemento > precisao*precisao; n++){
-      numerador = numerador*(2*(n-1)+2)*(2*(n-1)+1);
-      denominador = (denominador + 2*denominador/(1-(2*(n-1))))*(n)*(n)*4;
-      elemento=(numerador/denominador)*(-x);  
-      sqrt += elemento;
-    }*/
+
     double x = umMaisX - 1;
     double sqrt = 0;
     double elemento =1;
@@ -131,7 +118,7 @@ class Matematica{
       return sqrt;
   }
   
-  double limitaNumero(double x){
+  double limitaNumero(double x){ /*limita o numero entre um valor de 2pi e -2pi, util para seno e cosseno*/
     double pi =3.14159265358979323846264338;
     while (x > 2*pi)
       x-=2*pi;
