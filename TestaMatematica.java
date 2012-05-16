@@ -14,10 +14,10 @@ class TestaMatematica{
     double tempoExec = 0;
     
     for(int exec = 1; exec != 100; exec++){
-      tempoInicio = System.nanoTime();
+      tempoInicio = System.nanoTime(); //tempo em nanossegundo
       m.senoR(3.14159);
-      tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoFim = System.nanoTime();//tempo em nanosegundos
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
@@ -40,7 +40,7 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.cossenoR(3.14159);
       tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
@@ -111,7 +111,7 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.ln(1.5);
       tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
@@ -134,7 +134,7 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.raizQuadrada(1.5);
       tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
@@ -150,9 +150,9 @@ class TestaMatematica{
   
   void testaMatematica(){
     testaSeno();
-    testaSeno2();
+   
     testaCosseno();
-    testaCosseno2();
+    
     testaLogaritmo();
     testaRaizQuadrada();
   }
@@ -168,7 +168,7 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.senoRFloat(3.14f);
       tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       somaFloat += tempoExec;      
     }
     
@@ -179,7 +179,7 @@ class TestaMatematica{
       tempoInicio = System.nanoTime();
       m.senoR(3.14);
       tempoFim = System.nanoTime();
-      tempoExec = tempoFim - tempoInicio;
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       somaDouble += tempoExec;      
     }
     
