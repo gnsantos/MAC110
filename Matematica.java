@@ -31,6 +31,7 @@ class Matematica{
     double cos = 0;
     double elemento = 0;
     double k = 0;
+    x= limitaNumero(x);
        
     do{
     elemento = ((potencia(-1,k) * potencia(x,2*k)) / fatorial(2*k));
@@ -45,6 +46,7 @@ class Matematica{
     double seno = 0;
     double elemento = 0;
     double k = 0;
+    x = limitaNumero(x);
     
     do{
       elemento = potencia(x,2*k+1) * potencia(-1, k) / fatorial(2*k+1);
@@ -69,6 +71,7 @@ class Matematica{
   float senoRFloat(float x){
     float seno = x;
     float elemento = x;
+    x=limitaNumero(x);
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
       elemento *= (-1)*x*x/(cont*(cont+1));
@@ -81,6 +84,7 @@ class Matematica{
   double cossenoR(double x){
     double cosseno = 1;
     double elemento = 1;
+    x=limitaNumero(x);
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont+=2){      
       elemento *= (-1)*x*x/(cont*(cont-1));
@@ -89,11 +93,11 @@ class Matematica{
     return cosseno;
   }
   
-  double ln(double umMaisX) 
+  double ln(double umMaisX)  throws Exception
   {
     double x = umMaisX - 1;
-    /*if (mod(x)>=1)
-      throw new Exception();*/
+    if (x*x>=1)
+      throw new Exception();
     double ln = x;
     double elemento = x;
     
@@ -126,6 +130,16 @@ class Matematica{
       sqrt +=elemento;
     }
       return sqrt;
+  }
+  
+  double limitaNumero(double x){
+    double pi =3.14159265358979323846264338;
+    while (x > 2*pi)
+      x-=2*pi;
+    while (x<-2*pi)
+      x+=2*pi;
+    return x;  
+    
   }
   
 }
