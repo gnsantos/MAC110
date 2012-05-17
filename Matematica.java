@@ -27,34 +27,6 @@ class Matematica{
       return resultado;
   }
   
-  double cos(double x){ /*Calcula cosseno com uso literal de taylor. Mais lento que cossenoR*/
-    double cos = 0;
-    double elemento = 0;
-    double k = 0;
-    x= limitaNumero(x);
-       
-    do{/*Calcula cosseno com uso literal de taylor. Mais lento que cossenoR*/
-    elemento = ((potencia(-1,k) * potencia(x,2*k)) / fatorial(2*k));
-    cos = cos + elemento;
-    k = k +1;
-    } while(elemento*elemento > precisao*precisao);   
-      
-    return cos;
-  }
-  
-  double seno(double x){/*Calcula seno com uso literal de taylor. Mais lento que senoR*/
-    double seno = 0;
-    double elemento = 0;
-    double k = 0;
-    x = limitaNumero(x);
-    
-    do{
-      elemento = potencia(x,2*k+1) * potencia(-1, k) / fatorial(2*k+1);
-      seno = seno + elemento;
-      k = k + 1;     
-    } while(elemento*elemento > precisao*precisao);
-    return seno;
-  }
   
   double senoR(double x){/*Calcula seno*/
     double seno = x;
