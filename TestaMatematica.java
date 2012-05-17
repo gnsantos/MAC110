@@ -140,7 +140,7 @@ class TestaMatematica{
     
     diferencaDesempenho = (1 -mediaExecFloat/mediaExecDouble)*100;
     System.out.println("O ganho de desmpenho percentual usando-se float para o calculo do seno foi de " +diferencaDesempenho +"%");   
-    // possiveis problemas na definicao de ganho percentual;
+    
   }
 }
   
