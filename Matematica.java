@@ -1,9 +1,20 @@
+/************************************************************/
+/* MAC 110 - INTRODUCAO A CIENCIA DA COMPUTACAO             */
+/* IME-USP - PRIMEIRO SEMESTRE DE 2012                      */
+/* TURMA 45 - PROFESSOR MARCEL JACKWOSKI                    */
+/* SEGUNDO EXERCICIO-PROGRAMA                               */
+/* ARQUIVO: Matematica.java                                 */
+/* GERVASIO PROTASIO DOS SANTOS NETO    NUMERO USP: 7990996 */
+/* VICTOR SANCHES PORTELA               NUMERO USP:         */
+/* DATA DE ENTREGA : 18/05/2012                             */
+/************************************************************/
+
 class Matematica{
   
   double precisao = 1.0E-8; /* Variavel que controla quantidade de casas de decimal de erro*/
   
-  void definePrecisao(double epsilon){/*Calcula o numero de casas decimais dos resultados que começarão a se distanciar do valor correto*/
-    precisao =1.0E-epsilon;
+  void definePrecisao(double epsilon){
+    precisao = epsilon;
   }
 
    double fatorial(double numero){/*Calcula Fatorial*/
@@ -29,9 +40,9 @@ class Matematica{
   
   
   double senoR(double x){/*Calcula seno*/
+    x =limitaNumero(x); //Permite o calculo da funcao para valores altos
     double seno = x;
-    double elemento = x;
-    x=limitaNumero(x);
+    double elemento = x;    
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont += 2){    
       elemento *= ((-1)*x*x)/(cont*(cont+1));
@@ -42,6 +53,7 @@ class Matematica{
   }
   
   float senoRFloat(float x){/*Calcula Seno com variaveis float*/
+    x = limitaNumeroFloat(x); //Permite o calculo da funcao para valores altos
     float seno = x;
     float elemento = x;
     
@@ -56,7 +68,7 @@ class Matematica{
   double cossenoR(double x){ /*Calcula Cosseno*/
     double cosseno = 1;
     double elemento = 1;
-    x=limitaNumero(x);
+    x=limitaNumero(x); //Permite o calculo da funcao para valores baixos
     
     for(int cont = 2; elemento*elemento > precisao*precisao; cont+=2){      
       elemento *= (-1)*x*x/(cont*(cont-1));
@@ -100,6 +112,17 @@ class Matematica{
     return x;  
     
   }
+  
+  float limitaNumeroFloat(float x){ /*limita o numero entre um valor de 2pi e -2pi, criada para o metodo que usa seno como float*/
+    float pi = 3.14159265358979323846264338f;
+    while (x > 2*pi)
+      x-=2*pi;
+    while (x<-2*pi)
+      x+=2*pi;
+    return x;  
+    
+  }
+  
   
 }
 
