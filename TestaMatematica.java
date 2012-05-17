@@ -3,7 +3,7 @@ class TestaMatematica{
   Matematica m = new Matematica();
   
   void imprimeRelatorio(String nome, double desvioPadrao, double media){
-    System.out.println("Teste com " + nome + "\nDesvio Padrao = " + desvioPadrao + "\nTempo Medio de Execucao = " + media+"\n");
+    System.out.println("Teste com " + nome + "\nDesvio Padrao = " + desvioPadrao + "\nTempo Medio de Execucao = " + media+" milissegundos\n");
   }
   
   void testaSeno(){    
@@ -13,11 +13,11 @@ class TestaMatematica{
     double somaQuadrado = 0;
     double tempoExec = 0;
     
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime(); //tempo em nanossegundo
       m.senoR(3.14159);
       tempoFim = System.nanoTime();//tempo em nanosegundos
-      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
+      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos      
       soma += tempoExec;
       somaQuadrado += tempoExec*tempoExec;
     }
@@ -36,7 +36,7 @@ class TestaMatematica{
     double somaQuadrado = 0;
     double tempoExec = 0;
     
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
       m.cossenoR(3.14159);
       tempoFim = System.nanoTime();
@@ -60,7 +60,7 @@ class TestaMatematica{
     double somaQuadrado = 0;
     double tempoExec = 0;
     
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
       m.ln(1.5);
       tempoFim = System.nanoTime();
@@ -83,7 +83,7 @@ class TestaMatematica{
     double soma = 0;
     double somaQuadrado = 0;
     
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
       m.raizQuadrada(1.5);
       tempoFim = System.nanoTime();
