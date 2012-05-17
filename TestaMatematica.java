@@ -117,7 +117,7 @@ class TestaMatematica{
     double somaFloat = 0;
     double diferencaDesempenho = 0;
     
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
       m.senoRFloat(3.14f);
       tempoFim = System.nanoTime();
@@ -128,7 +128,7 @@ class TestaMatematica{
     double mediaExecFloat = somaFloat/100;
     
     double somaDouble = 0;
-    for(int exec = 1; exec != 100; exec++){
+    for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
       m.senoR(3.14);
       tempoFim = System.nanoTime();
