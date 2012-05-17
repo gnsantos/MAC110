@@ -77,7 +77,7 @@ class Matematica{
     return cosseno;
   }
   
-  double ln(double umMaisX) /*calcula ln de UmMaisX-1*/
+  double ln(double umMaisX) /*calcula ln de UmMaisX*/
   {
     double x = umMaisX - 1;
     double ln = x;
@@ -90,7 +90,7 @@ class Matematica{
     return ln;    
   }
   
-  double raizQuadrada(double umMaisX)/*calcula raiz quadrada de UmMaisX -1 */
+  double raizQuadrada(double umMaisX)/*calcula raiz quadrada de UmMaisX*/
   {
 
     double x = umMaisX - 1;
@@ -124,10 +124,4 @@ class Matematica{
   }
   
   
-}
-
-
-  
-
-
-      
+}     
