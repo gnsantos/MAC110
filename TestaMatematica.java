@@ -5,7 +5,7 @@
 /* SEGUNDO EXERCICIO-PROGRAMA                               */
 /* ARQUIVO: TestaMatematica.java                            */
 /* GERVASIO PROTASIO DOS SANTOS NETO    NUMERO USP: 7990996 */
-/* VICTOR SANCHES PORTELA               NUMERO USP:         */
+/* VICTOR SANCHES PORTELA               NUMERO USP: 7991152 */
 /* DATA DE ENTREGA : 18/05/2012                             */
 /************************************************************/
 
@@ -71,20 +71,25 @@ class TestaMatematica{
     double somaQuadrado = 0;
     double tempoExec = 0;
     
-    for(int exec = 1; exec <= 100; exec++){
-      tempoInicio = System.nanoTime();
-      m.ln(1.5);
-      tempoFim = System.nanoTime();
-      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
-      soma += tempoExec;
-      somaQuadrado += tempoExec*tempoExec;
+    try{
+      for(int exec = 1; exec <= 100; exec++){
+        tempoInicio = System.nanoTime();
+        m.ln(1.5);
+        tempoFim = System.nanoTime();
+        tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
+        soma += tempoExec;
+        somaQuadrado += tempoExec*tempoExec;
+      }
+      
+      double mediaExec = soma/100;
+      double variancia = somaQuadrado/100 - mediaExec*mediaExec;
+      double desvioPadrao =  Math.sqrt(variancia);
+      
+      imprimeRelatorio("logaritmo natural", desvioPadrao, mediaExec);
     }
-    
-    double mediaExec = soma/100;
-    double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  Math.sqrt(variancia);
-    
-    imprimeRelatorio("logaritmo natural", desvioPadrao, mediaExec);
+    catch(Exception e){
+      System.out.println(e.getMessage());
+    }
   }
  
   void testaRaizQuadrada(){    //Testa o desmpenho da funca para calulo da raiz quadrada
@@ -93,21 +98,25 @@ class TestaMatematica{
     double tempoExec = 0;
     double soma = 0;
     double somaQuadrado = 0;
-    
-    for(int exec = 1; exec <= 100; exec++){
-      tempoInicio = System.nanoTime();
-      m.raizQuadrada(1.5);
-      tempoFim = System.nanoTime();
-      tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
-      soma += tempoExec;
-      somaQuadrado += tempoExec*tempoExec;
+    try{
+      for(int exec = 1; exec <= 100; exec++){
+        tempoInicio = System.nanoTime();
+        m.raizQuadrada(1.5);
+        tempoFim = System.nanoTime();
+        tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
+        soma += tempoExec;
+        somaQuadrado += tempoExec*tempoExec;
+      }
+      
+      double mediaExec = soma/100;
+      double variancia = somaQuadrado/100 - mediaExec*mediaExec;
+      double desvioPadrao =  Math.sqrt(variancia);
+      
+      imprimeRelatorio("raiz quadrada", desvioPadrao, mediaExec);
     }
-    
-    double mediaExec = soma/100;
-    double variancia = somaQuadrado/100 - mediaExec*mediaExec;
-    double desvioPadrao =  Math.sqrt(variancia);
-    
-    imprimeRelatorio("raiz quadrada", desvioPadrao, mediaExec);
+    catch(Exception e){
+      System.out.println(e.getMessage());
+    }
   }
   
   
