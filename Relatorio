@@ -1,0 +1,5 @@
+Foram feitas duas classes: Matemática e TestaMatemática.
+
+Na classe matemática, estão os métodos que executam as operações pedidas pelo enunciado do EP.Os métodos ln e Raiz lançam exceção caso o valor do módulo de umMaisX seja maior ou igual a 2 pois, caos seja, o erro tende ao infinito e o looping se torna infinito, isso é devido a uma limitação da série de Taylor.
+
+Em TesteMatemática, há metodos separados para o teste de eficiencia de cada operação, assim como um método que chama todos esses outros métodos.É necessário passar como parametro valores para o teste das operações, e no caso do teste global, um dos vlaores é usado para ln e raiz (umMaisX) e outro para seno e cosseno (xTri).

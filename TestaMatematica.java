@@ -17,7 +17,7 @@ class TestaMatematica{
     System.out.println("Teste com " + nome + "\nDesvio Padrao = " + desvioPadrao + "\nTempo Medio de Execucao = " + media+" milissegundos\n");
   }
   
-  void testaSeno(){    //Testa o desempenho da funcao para calculo do seno
+  void testaSeno(double x){    //Testa o desempenho da funcao para calculo do seno
     double tempoInicio = 0;
     double tempoFim = 0;
     double soma = 0;
@@ -40,7 +40,7 @@ class TestaMatematica{
     imprimeRelatorio("seno", desvioPadrao, mediaExec);
   }
   
-  void testaCosseno(){    //Testa o desmpenho da funca para calulo do cosseno 
+  void testaCosseno(double x){    //Testa o desmpenho da funca para calulo do cosseno 
     double tempoInicio = 0;
     double tempoFim = 0;
     double soma = 0;
@@ -49,7 +49,7 @@ class TestaMatematica{
     
     for(int exec = 1; exec <= 100; exec++){
       tempoInicio = System.nanoTime();
-      m.cossenoR(3.14159);
+      m.cossenoR(x);
       tempoFim = System.nanoTime();
       tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       soma += tempoExec;
@@ -64,7 +64,7 @@ class TestaMatematica{
   }
   
  
-  void testaLogaritmo(){    //Testa o desmpenho da funca para calulo do logaritmo natural
+  void testaLogaritmo(double umMaisX){    //Testa o desmpenho da funca para calulo do logaritmo natural
     double tempoInicio = 0;
     double tempoFim = 0;
     double soma = 0;
@@ -74,7 +74,7 @@ class TestaMatematica{
     try{
       for(int exec = 1; exec <= 100; exec++){
         tempoInicio = System.nanoTime();
-        m.ln(1.5);
+        m.ln(umMaisX);
         tempoFim = System.nanoTime();
         tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
         soma += tempoExec;
@@ -92,7 +92,7 @@ class TestaMatematica{
     }
   }
  
-  void testaRaizQuadrada(){    //Testa o desmpenho da funca para calulo da raiz quadrada
+  void testaRaizQuadrada(double umMaisX){    //Testa o desmpenho da funca para calulo da raiz quadrada
     double tempoInicio = 0;
     double tempoFim = 0;
     double tempoExec = 0;
@@ -101,7 +101,7 @@ class TestaMatematica{
     try{
       for(int exec = 1; exec <= 100; exec++){
         tempoInicio = System.nanoTime();
-        m.raizQuadrada(1.5);
+        m.raizQuadrada(umMaisX);
         tempoFim = System.nanoTime();
         tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
         soma += tempoExec;
@@ -121,24 +121,25 @@ class TestaMatematica{
   
   
   
-  void testaMatematica(){ //Executa de forma conjunta os metodos para a avalicao de metodos individuais da classe Matematica.
+  void testaMatematica(double umMaisX, double xTri){ //Executa de forma conjunta os metodos para a avalicao de metodos individuais da classe Matematica.
                           //Isso permite uma avaliacao global da classe
-    testaSeno();   
-    testaCosseno();    
-    testaLogaritmo();
-    testaRaizQuadrada();
+    testaSeno(xTri);   
+    testaCosseno(xTri);    
+    testaLogaritmo(umMaisX);
+    testaRaizQuadrada(umMaisX);
   }
   
-  void comparaSeno(){ //Compara do desempenho dos metodos que calculam o seno de um valor. Um dos metodos utiliza valores float, outros valores double.
+  void comparaSeno(double x){ //Compara do desempenho dos metodos que calculam o seno de um valor. Um dos metodos utiliza valores float, outros valores double.
     double tempoInicio = 0;
     double tempoFim = 0;
     double tempoExec = 0;
     double somaFloat = 0;
     double diferencaDesempenho = 0;
+    float fx = (float)x;
     
     for(int exec = 1; exec <= 100; exec++){ //Permitira avaliacao do desmpenho do metodo que calcula o  seno e utiliza valores float
       tempoInicio = System.nanoTime();
-      m.senoRFloat(3.14f);
+      m.senoRFloat(fx);
       tempoFim = System.nanoTime();
       tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       somaFloat += tempoExec;      
@@ -149,7 +150,7 @@ class TestaMatematica{
     double somaDouble = 0;
     for(int exec = 1; exec <= 100; exec++){ //Permite a avaliacao do desempenho do metodo que calcula o seno e utiliza valores double
       tempoInicio = System.nanoTime();
-      m.senoR(3.14);
+      m.senoR(x);
       tempoFim = System.nanoTime();
       tempoExec = (tempoFim - tempoInicio)/Math.pow(10.0,6.0);//Converte um tempo em nanossegundos para milissegundos
       somaDouble += tempoExec;      

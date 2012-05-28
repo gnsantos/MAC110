@@ -81,7 +81,7 @@ class Matematica{
   {
     double x = umMaisX - 1; 
     if (x*x>=1)
-      throw new Exception("Impossivel calcula logaritmo de valores maiores ou iguais a 2");// Limitação dada pela série de taylor, lançada exceção.
+      throw new Exception("Impossivel calcula logaritmo com módulo de valores maiores ou iguais a 2");// Limitação dada pela série de taylor, lançada exceção.
     double ln = x;
     double elemento = x;
     
@@ -97,7 +97,7 @@ class Matematica{
 
     double x = umMaisX - 1;
     if (x*x>1)
-      throw new Exception();// Limitação dada pela série de taylor, lançada exceção.
+      throw new Exception("Impossivel calcula raiz com módulo de valores maiores ou iguais a 2");// Limitação dada pela série de taylor, lançada exceção.
     double sqrt = 0;
     double elemento =1;
     for(int n = 0; elemento*elemento > precisao*precisao; n++){
