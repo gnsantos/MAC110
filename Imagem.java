@@ -36,8 +36,8 @@ class Imagem
     }
   }
   
-  int media(int i, int j, int tamanho){    
-    int soma;
+  int media(int i, int j, int tamanho){ // calcula a dupla somatoria que determina o novo valor de um pixle no filtro medio    
+    int soma = 0;
     int[][] auxiliar = pixels;    
     
     for(int k = -tamanho/2; k < tamanho/2; k++){
@@ -47,6 +47,45 @@ class Imagem
     }
     int media = 1/(tamanho*tamanho) * soma;
     return media;
+  }
+  
+  int mediana(int l, int c, int tamanho){ // calcula a mediana de uma vizinhanca para o metodo filtroMediana
+    int a[][] = new int[tamanho][tamanho];    
+    int[] aux = new int[a.length*a[0].length];
+    int k= 0, l1= 0, c1 = 0;
+    
+    for(int i = l-tamanho/2; i < l+tamanho/2; i++){
+      for(int j = c - tamanho/2; j < c+tamanho/2; j++){
+        a[l1][c1] = pixels[i][j];        
+        c1++;
+      }
+      c1 = 0;
+      l1++;
+    }      
+    
+    for(int i = 0; i < a.length; i++){
+      for(int j = 0; j < a[0].length; j++){
+        aux[k] = a[i][j];
+        k++;
+      }
+    }
+    k = 0;
+    for(int i = 1; i < aux.length; i++){
+      for(int j = 0; j < aux.length - i; j++){
+        if( aux[j] > aux[j+1]){
+          int x = aux[j];
+          aux[j] = aux[j+1];
+          aux[j+1] = x;
+        }
+      }      
+    }
+    for(int i = 0; i < a.length; i++){
+      for(int j = 0; j < a[0].length; j++){
+        a[i][j] = aux[k];
+        k++;
+      }
+    }
+    return a[a.length/2][a[0].length/2];
   }
     
   // Suaviza imagem com filtro mediano
