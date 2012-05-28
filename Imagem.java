@@ -1,11 +1,13 @@
 class Imagem
 {
   int[][] pixels;
+  int[][] auxiliar; // matriz auxiliar que sera usada para conservar os valores originais de cada pixel
   
   // Inicializa matriz de pixels da classe
   Imagem(int[][] matriz)
   {
     pixels = matriz;
+    auxiliar = matriz;
   }
   
   // Devolve largura em pixels da imagem
@@ -37,8 +39,7 @@ class Imagem
   }
   
   int media(int i, int j, int tamanho){ // calcula a dupla somatoria que determina o novo valor de um pixle no filtro medio    
-    int soma = 0;
-    int[][] auxiliar = pixels;    
+    int soma = 0;       
     
     for(int k = -tamanho/2; k < tamanho/2; k++){
       for(int l = -tamanho/2; l < tamanho/2; l++){        
@@ -56,7 +57,7 @@ class Imagem
     
     for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
       for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
-        a[l1][c1] = pixels[i][j];        
+        a[l1][c1] = auxiliar[i][j];        
         c1++;
       }
       c1 = 0;
@@ -91,7 +92,11 @@ class Imagem
   // Suaviza imagem com filtro mediano
   void filtroMediano(int tamanho)
   {
-    // Para voce completar!
+    for(int i = 0; i < altura(); i++){
+      for(int j = 0; j < largura(); j++){
+        pixels[i][j] = mediana(i, j, tamanho);
+      }
+    }
   }
   
   // Suaviza imagem com filtro gaussiano
