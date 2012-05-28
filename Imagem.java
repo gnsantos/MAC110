@@ -50,6 +50,23 @@ class Imagem
     return media;
   }
   
+  int mediaQuadrada(int i,int j,int tamanho){
+    int soma = 0;       
+    
+    for(int k = -tamanho/2; k <= tamanho/2; k++){
+      for(int l = -tamanho/2; l <= tamanho/2; l++){        
+        soma += auxiliar[i+k][j+l]*auxiliar[i+k][j+l];
+      }     
+    }
+    int media = soma/(tamanho*tamanho);
+    return media;
+  }
+  
+  int varianciaMatriz(int i, int j, int tamanho){
+    int variancia = mediaQuadrada(i, j, tamanho) - media(i, j, tamanho)*media(i, j, tamanho);
+    return variancia;
+  }
+  
   int mediana(int l, int c, int tamanho){ // calcula a mediana de uma vizinhanca para o metodo filtroMediana
     int a[][] = new int[tamanho][tamanho];    
     int[] aux = new int[a.length*a[0].length];
@@ -102,7 +119,30 @@ class Imagem
   // Suaviza imagem com filtro gaussiano
   void filtroGaussiano(double sigma, int tamanho)
   {
-    // Para voce completar!
+     for(int i = 0; i < altura(); i++){
+      for(int j = 0; j < largura(); j++){
+        pixels[i][[j] = somatoriaGaussiana(i,j, tamanho);
+      }
+     }
+    
+  }
+  
+  int somatoriaGaussiana(int i, int j, int tamanho){    
+    int soma = 0;
+    for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
+      for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
+        soma += funcaoGuassiana(l, c)*auxiliar[i+l][j+c];
+      }
+    }
+    return soma;
+  }
+  
+  int fucaoGaussiana(int x, int y, double sigma){
+    int g;    
+    double euler = 2.7182818284590452353602874713526624977572470936999595;
+    double pi = 3.1415926535897932384626433832795028841971693993751058;
+    g = (int) (1/(2*pi*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma))));
+    return g;
   }
   
 }
