@@ -41,12 +41,12 @@ class Imagem
   int media(int i, int j, int tamanho){ // calcula a dupla somatoria que determina o novo valor de um pixle no filtro medio    
     int soma = 0;       
     
-    for(int k = -tamanho/2; k < tamanho/2; k++){
-      for(int l = -tamanho/2; l < tamanho/2; l++){        
+    for(int k = -tamanho/2; k <= tamanho/2; k++){
+      for(int l = -tamanho/2; l <= tamanho/2; l++){        
         soma += auxiliar[i+k][j+l];
       }     
     }
-    int media = 1/(tamanho*tamanho) * soma;
+    int media = soma/(tamanho*tamanho);
     return media;
   }
   
