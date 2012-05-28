@@ -54,8 +54,8 @@ class Imagem
     int[] aux = new int[a.length*a[0].length];
     int k= 0, l1= 0, c1 = 0;
     
-    for(int i = l-tamanho/2; i < l+tamanho/2; i++){
-      for(int j = c - tamanho/2; j < c+tamanho/2; j++){
+    for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
+      for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
         a[l1][c1] = pixels[i][j];        
         c1++;
       }
