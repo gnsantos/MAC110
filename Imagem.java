@@ -40,13 +40,16 @@ class Imagem
   
   int media(int i, int j, int tamanho){ // calcula a dupla somatoria que determina o novo valor de um pixle no filtro medio    
     int soma = 0;       
-    
+    int n = 0;
     for(int k = -tamanho/2; k <= tamanho/2; k++){
-      for(int l = -tamanho/2; l <= tamanho/2; l++){        
-        soma += auxiliar[i+k][j+l];
+      for(int l = -tamanho/2; l <= tamanho/2; l++){
+        if (i+k<auxiliar.length && j+l<auxiliar[0].length){
+          soma += auxiliar[i+k][j+l];
+          n++;
+        }
       }     
     }
-    int media = soma/(tamanho*tamanho);
+    int media = soma/n;
     return media;
   }
   
@@ -117,11 +120,11 @@ class Imagem
   }
   
   // Suaviza imagem com filtro gaussiano
-  void filtroGaussiano(double sigma, int tamanho)
+  /*void filtroGaussiano(double sigma, int tamanho)
   {
      for(int i = 0; i < altura(); i++){
       for(int j = 0; j < largura(); j++){
-        pixels[i][[j] = somatoriaGaussiana(i,j, tamanho);
+        pixels[i][j] = somatoriaGaussiana(i,j, tamanho);
       }
      }
     
@@ -143,6 +146,6 @@ class Imagem
     double pi = 3.1415926535897932384626433832795028841971693993751058;
     g = (int) (1/(2*pi*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma))));
     return g;
-  }
+  }*/
   
 }
