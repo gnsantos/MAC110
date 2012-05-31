@@ -43,7 +43,7 @@ class Imagem
     int n = 0;
     for(int k = -tamanho/2; k <= tamanho/2; k++){
       for(int l = -tamanho/2; l <= tamanho/2; l++){
-        if (i+k<auxiliar.length && j+l<auxiliar[0].length){
+        if (i+k<auxiliar.length && j+l<auxiliar[0].length && i+k>=0 && j+l>=0){
           soma += auxiliar[i+k][j+l];
           n++;
         }
@@ -65,48 +65,29 @@ class Imagem
     return media;
   }
   
-  int varianciaMatriz(int i, int j, int tamanho){
-    int variancia = mediaQuadrada(i, j, tamanho) - media(i, j, tamanho)*media(i, j, tamanho);
-    return variancia;
-  }
-  
-  int mediana(int l, int c, int tamanho){ // calcula a mediana de uma vizinhanca para o metodo filtroMediana
-    int a[][] = new int[tamanho][tamanho];    
-    int[] aux = new int[a.length*a[0].length];
-    int k= 0, l1= 0, c1 = 0;
+  int mediana(int l, int c, int tamanho){ // calcula a mediana de uma vizinhanca para o metodo filtroMediana    
+    int[] aux = new int[tamanho*tamanho];// Vetor que será usado para ordenação
+    int k= 0;
     
-    for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
-      for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
-        a[l1][c1] = auxiliar[i][j];        
-        c1++;
+    for(int i =-tamanho/2; i <= tamanho/2; i++){//passa os valores originais da izinhança para um vetor
+      for(int j = -tamanho/2; j <= tamanho/2; j++){
+        if (l+i<auxiliar.length && j+c<auxiliar[0].length && l+i>0 && j+c>0){
+          aux[k] = auxiliar[l+i][c+j];        
+          k++;
+        }
       }
-      c1 = 0;
-      l1++;
     }      
-    
-    for(int i = 0; i < a.length; i++){
-      for(int j = 0; j < a[0].length; j++){
-        aux[k] = a[i][j];
-        k++;
-      }
-    }
     k = 0;
-    for(int i = 1; i < aux.length; i++){
-      for(int j = 0; j < aux.length - i; j++){
-        if( aux[j] > aux[j+1]){
-          int x = aux[j];
-          aux[j] = aux[j+1];
-          aux[j+1] = x;
+    for(int i = 0; i < aux.length-1; i++){ // ordena o vetor
+      for(int j = i+1; j < aux.length; j++){
+        if( aux[i] > aux[j]){
+          int x = aux[i];
+          aux[i] = aux[j];
+          aux[j] = x;
         }
       }      
     }
-    for(int i = 0; i < a.length; i++){
-      for(int j = 0; j < a[0].length; j++){
-        a[i][j] = aux[k];
-        k++;
-      }
-    }
-    return a[a.length/2][a[0].length/2];
+    return aux[(int)(aux.length/2+0.5)];//retorna o valor do meio do vetor (arredondando para cima)
   }
     
   // Suaviza imagem com filtro mediano
