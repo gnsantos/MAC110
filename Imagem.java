@@ -101,32 +101,34 @@ class Imagem
   }
   
   // Suaviza imagem com filtro gaussiano
-  /*void filtroGaussiano(double sigma, int tamanho)
+  void filtroGaussiano(double sigma, int tamanho)
   {
      for(int i = 0; i < altura(); i++){
       for(int j = 0; j < largura(); j++){
-        pixels[i][j] = somatoriaGaussiana(i,j, tamanho);
+        pixels[i][j] = somatoriaGaussiana(i,j, tamanho, sigma);
       }
      }
     
   }
   
-  int somatoriaGaussiana(int i, int j, int tamanho){    
+  int somatoriaGaussiana(int l, int c, int tamanho, double sigma){    
     int soma = 0;
     for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
       for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
-        soma += funcaoGuassiana(l, c)*auxiliar[i+l][j+c];
+        if (l+i<auxiliar.length && j+c<auxiliar[0].length && l+i>0 && j+c>0)
+          soma += funcaoGaussiana(l, c, sigma)*auxiliar[i+l][j+c];
       }
     }
     return soma;
   }
   
-  int fucaoGaussiana(int x, int y, double sigma){
+  int funcaoGaussiana(int x, int y, double sigma){
     int g;    
-    double euler = 2.7182818284590452353602874713526624977572470936999595;
-    double pi = 3.1415926535897932384626433832795028841971693993751058;
-    g = (int) (1/(2*pi*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma))));
+    double euler = 2.718281828;//4590452353602874713526624977572470936999595;
+    double pi = 3.141592653;//5897932384626433832795028841971693993751058;
+    g = (int) (1/(2*pi*sigma*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma))));
+    System.out.println(g);
     return g;
-  }*/
+  }
   
 }
