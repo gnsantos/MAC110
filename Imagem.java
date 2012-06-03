@@ -113,21 +113,20 @@ class Imagem
   
   int somatoriaGaussiana(int l, int c, int tamanho, double sigma){    
     int soma = 0;
-    for(int i = l-tamanho/2; i <= l+tamanho/2; i++){
-      for(int j = c - tamanho/2; j <= c+tamanho/2; j++){
+    for(int i = -tamanho/2; i <= tamanho/2; i++){
+      for(int j =  - tamanho/2; j <= tamanho/2; j++){
         if (l+i<auxiliar.length && j+c<auxiliar[0].length && l+i>0 && j+c>0)
-          soma += funcaoGaussiana(l, c, sigma)*auxiliar[i+l][j+c];
+          soma +=(int) (funcaoGaussiana(i, j, sigma)*auxiliar[i+l][j+c]);
       }
     }
     return soma;
   }
   
-  int funcaoGaussiana(int x, int y, double sigma){
-    int g;    
+  double funcaoGaussiana(int x, int y, double sigma){
+    double g;    
     double euler = 2.718281828;//4590452353602874713526624977572470936999595;
     double pi = 3.141592653;//5897932384626433832795028841971693993751058;
-    g = (int) (1/(2*pi*sigma*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma))));
-    System.out.println(g);
+    g = ((1/(2*pi*sigma*sigma) * Math.pow(euler, ((-x*x - y*y)/(2*sigma*sigma)))));
     return g;
   }
   
