@@ -5,6 +5,7 @@ class EP3{
     Scanner sc = new Scanner(System.in);
     int opcao=0;
     String nome = "";
+    String nome_copia = "";
     Imagem minhaImagem=null;
     while (opcao!=7){
       System.out.println("Menu");
@@ -20,7 +21,9 @@ class EP3{
       if (opcao==1){
         System.out.println("Digite o nome; da imagem do formato .pgm sem extenção");
         sc = new Scanner(System.in);
-        nome = sc.nextLine() +".pgm";
+        nome = sc.nextLine();
+        nome_copia = nome;
+        nome = nome + ".pgm";
         minhaImagem = LeituraEscritaImagem.leImagem(nome);//Tenta ler imagem
         if (minhaImagem == null){
           nome = "";
@@ -37,16 +40,27 @@ class EP3{
 
       }
       else if (opcao==3){
-        //Suaviza com filtro medio
+        System.out.println("Entre um tamanho para a vizinhanca: ");
+        int tamanho = sc.nextInt();
+        minhaImagem.filtroMedio(tamanho);
+        System.out.println("Imagem suavizada com sucesso!");
+        VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
+        vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
       }
       else if (opcao==4){
-        //suaviza com filtro mediano
+        System.out.println("Entre uma imagem para a vizinhanca: ");
+        int tamanho = sc.nextInt();
+        minhaImagem.filtroMediano(tamanho);
+        System.out.println("Imagem suavizada com sucesso!");
+        VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
+        vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
       }
       else if (opcao==5){
         //suaviza com filtro gaussiano
       }
       else if (opcao==6){
-        //grava Imagem
+        LeituraEscritaImagem.escreveImagem(nome_copia+"_copia.pgm", minhaImagem);
+        System.out.println("Imagem gravada com sucesso!");
       }
     }
   }
