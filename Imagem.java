@@ -112,14 +112,16 @@ class Imagem
   }
   
   int somatoriaGaussiana(int l, int c, int tamanho, double sigma){    
-    int soma = 0;
+    double soma = 0, normal = 0;//normal serve para normalizar a função gaussiana
     for(int i = -tamanho/2; i <= tamanho/2; i++){
       for(int j =  - tamanho/2; j <= tamanho/2; j++){
-        if (l+i<auxiliar.length && j+c<auxiliar[0].length && l+i>0 && j+c>0)
-          soma +=(int) (funcaoGaussiana(i, j, sigma)*auxiliar[i+l][j+c]);
+        if (l+i<auxiliar.length && j+c<auxiliar[0].length && l+i>0 && j+c>0){
+          normal +=(funcaoGaussiana(i, j, sigma));
+          soma +=(funcaoGaussiana(i, j, sigma)*auxiliar[i+l][j+c]);
+        }
       }
     }
-    return soma;
+    return (int)(soma/normal+0.5);
   }
   
   double funcaoGaussiana(int x, int y, double sigma){
