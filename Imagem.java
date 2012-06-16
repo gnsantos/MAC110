@@ -7,7 +7,10 @@ class Imagem
   Imagem(int[][] matriz)
   {
     pixels = matriz;
-    auxiliar = matriz;
+    auxiliar=new int[altura()][largura()];
+    for(int i=0; i<altura();i++)
+      for(int j =0;j<largura();j++)
+          auxiliar[i][j]=pixels[i][j];
   }
   
   // Devolve largura em pixels da imagem
