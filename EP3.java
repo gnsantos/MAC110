@@ -39,28 +39,51 @@ class EP3{
           vis.mostraImagem(minhaImagem,nome);
 
       }
-      else if (opcao==3){
-        System.out.println("Entre um tamanho para a vizinhanca: ");
-        int tamanho = sc.nextInt();
-        minhaImagem.filtroMedio(tamanho);
-        System.out.println("Imagem suavizada com sucesso!");
-        VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
-        vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
+      else if (opcao==3){ // suaviza imagem com filtro medio
+        if (minhaImagem == null)
+          System.out.println("Carregue uma imagem primeiro!");
+        else{
+          System.out.println("Entre um tamanho para a vizinhanca: ");
+          int tamanho = sc.nextInt();
+          minhaImagem.filtroMedio(tamanho);
+          System.out.println("Imagem suavizada com sucesso!");
+          VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
+          vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
+        }
       }
-      else if (opcao==4){
-        System.out.println("Entre uma imagem para a vizinhanca: ");
-        int tamanho = sc.nextInt();
-        minhaImagem.filtroMediano(tamanho);
-        System.out.println("Imagem suavizada com sucesso!");
-        VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
-        vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
+      else if (opcao==4){ //suaviza imagem com filtro mediano
+        if (minhaImagem == null)
+          System.out.println("Carregue uma imagem primeiro!");
+        else{
+          System.out.println("Entre um tamanho para a vizinhanca: ");
+          int tamanho = sc.nextInt();
+          minhaImagem.filtroMediano(tamanho);
+          System.out.println("Imagem suavizada com sucesso!");
+          VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
+          vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
+        }
       }
-      else if (opcao==5){
-        //suaviza com filtro gaussiano
+      else if (opcao==5){ //suaviza imagem com filtro gaussiano
+        if (minhaImagem == null)
+          System.out.println("Carregue uma imagem primeiro!");
+        else{
+          System.out.println("Entre um tamanho para a vizinhanca: ");
+          int tamanho = sc.nextInt();
+          System.out.println("Entre um sigma (desvio padrao) para a vizinhanca: ");
+          int sigma = sc.nextInt();
+          minhaImagem.filtroGaussiano(tamanho, sigma);
+          System.out.println("Imagem suavizada com sucesso!");
+          VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
+          vis.mostraImagem(minhaImagem,nome); //Abre imagem apos a suavizacao para que o usuario a visualize;
+        }
       }
-      else if (opcao==6){
-        LeituraEscritaImagem.escreveImagem(nome_copia+"_copia.pgm", minhaImagem);
-        System.out.println("Imagem gravada com sucesso!");
+      else if (opcao==6){ // grava a imagem
+        if (minhaImagem == null)
+          System.out.println("Carregue uma imagem primeiro!");
+        else{
+          LeituraEscritaImagem.escreveImagem(nome_copia+"_copia.pgm", minhaImagem);
+          System.out.println("Imagem gravada com sucesso!");
+        }
       }
     }
   }
