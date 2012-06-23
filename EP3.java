@@ -100,7 +100,7 @@ class EP3{
           }
           if (!nomeNovo.equals("")){
             nomeNovo = nomeNovo + ".pgm";
-            LeituraEscritaImagem.escreveImagem("", minhaImagem);
+            LeituraEscritaImagem.escreveImagem(nomeNovo, minhaImagem);
             System.out.println("Imagem gravada com sucesso! Imagem salva como:"+nomeNovo);
           }
         }
