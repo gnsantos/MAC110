@@ -5,7 +5,6 @@ class EP3{
     Scanner sc = new Scanner(System.in);
     int opcao=0;
     String nome = "";
-    String nome_copia = "";
     Imagem minhaImagem=null;
     while (opcao!=7){
       System.out.println("Menu");
@@ -21,13 +20,11 @@ class EP3{
       if (opcao==1){
         System.out.println("Digite o nome; da imagem do formato .pgm sem extenção");
         sc = new Scanner(System.in);
-        nome = sc.nextLine();
-        nome_copia = nome;
-        nome = nome + ".pgm";
+        nome = sc.nextLine() +".pgm";
         minhaImagem = LeituraEscritaImagem.leImagem(nome);//Tenta ler imagem
         if (minhaImagem == null){
           nome = "";
-          System.out.println("Imagem não existente ou problema ao tnetar ler imagem");
+          System.out.println("Imagem não existente ou problema ao tentar ler imagem");
         }else
           System.out.println(nome+" carregado com sucesso");
       }
@@ -81,8 +78,31 @@ class EP3{
         if (minhaImagem == null)
           System.out.println("Carregue uma imagem primeiro!");
         else{
-          LeituraEscritaImagem.escreveImagem(nome_copia+"_copia.pgm", minhaImagem);
-          System.out.println("Imagem gravada com sucesso!");
+          String nomeNovo;
+          while(true){
+            System.out.println("Digite o nome da copia que você deseja salvar sem extenção. Caso deseje cancelar esta ação, aperte somente enter");
+            sc = new Scanner(System.in);
+            nomeNovo = sc.nextLine();
+            if (nomeNovo.equals(""))
+              break;
+            Imagem imagemTemp = LeituraEscritaImagem.leImagem(nomeNovo);
+            if (imagemTemp == null)
+              break;
+            else{
+              System.out.println("Ja existe um arquivo com este nome. Caso deseje sobre escreve-lo, digitite 's', caso contrario aperte enter");
+              sc = new Scanner(System.in);
+              String opcao2 = sc.nextLine();
+              if (opcao2.equals("s") || opcao2.equals("S"))
+                break;
+              else
+                System.out.println("Ação cancelada.O arquivo ainda não foi salvo");
+            }
+          }
+          if (!nomeNovo.equals("")){
+            nomeNovo = nomeNovo + ".pgm";
+            LeituraEscritaImagem.escreveImagem("", minhaImagem);
+            System.out.println("Imagem gravada com sucesso! Imagem salva como:"+nomeNovo);
+          }
         }
       }
     }
