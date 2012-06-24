@@ -1,3 +1,14 @@
+/************************************************************/
+/* MAC 110 - INTRODUCAO A CIENCIA DA COMPUTACAO             */
+/* IME-USP - PRIMEIRO SEMESTRE DE 2012                      */
+/* TURMA 45 - PROFESSOR MARCEL JACKWOSKI                    */
+/* SEGUNDO EXERCICIO-PROGRAMA                               */
+/* ARQUIVO: Matematica.java                                 */
+/* GERVASIO PROTASIO DOS SANTOS NETO    NUMERO USP: 7990996 */
+/* VICTOR SANCHES PORTELA               NUMERO USP: 7991152 */
+/* DATA DE ENTREGA : 18/05/2012                             */
+/************************************************************/
+
 import java.util.*;
 
 class EP3{
