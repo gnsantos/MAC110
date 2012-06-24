@@ -17,7 +17,7 @@ class EP3{
     int opcao=0;
     String nome = "";
     Imagem minhaImagem=null;
-    while (opcao!=7){
+    while (opcao!=7){//Enquanto o usuário não escolehr sair, o menu semrpe será re-escrito a cada ação, inclusive no inicio do programa.
       System.out.println("Menu");
       System.out.println("==");
       System.out.println("1)Ler imagem");
@@ -28,7 +28,7 @@ class EP3{
       System.out.println("6)Gravar imagem");
       System.out.println("7)Sair");
       opcao = sc.nextInt();
-      if (opcao==1){
+      if (opcao==1){//Ler imagem
         System.out.println("Digite o nome; da imagem do formato .pgm sem extenção");
         sc = new Scanner(System.in);
         nome = sc.nextLine() +".pgm";
@@ -41,7 +41,7 @@ class EP3{
       }
       else if (opcao==2){
         VisualizadorImagem vis = new VisualizadorImagem();//Visualizador
-        if (minhaImagem == null)
+        if (minhaImagem == null)//Caso não tneha imagem carregada, é cancelada a ação
           System.out.println("Carregue uma imagem primeiro");
         else
           vis.mostraImagem(minhaImagem,nome);
@@ -86,17 +86,18 @@ class EP3{
         }
       }
       else if (opcao==6){ // grava a imagem
-        if (minhaImagem == null)
+        if (minhaImagem == null)//Cancela ação caso não haja imagem carregada.
           System.out.println("Carregue uma imagem primeiro!");
         else{
           String nomeNovo;
-          while(true){
+          while(true){//Laço que pede o nome do novo arquivo, e caso exista um arquivo com o mesmo nome, o usuário é avisado e é dada 
+            //a opção do usuário cancelar ou redigitar o nome do arquivo.
             System.out.println("Digite o nome da copia que você deseja salvar sem extenção. Caso deseje cancelar esta ação, aperte somente enter");
             sc = new Scanner(System.in);
             nomeNovo = sc.nextLine();
             if (nomeNovo.equals(""))
               break;
-            Imagem imagemTemp = LeituraEscritaImagem.leImagem(nomeNovo+ ".pgm");
+            Imagem imagemTemp = LeituraEscritaImagem.leImagem(nomeNovo+ ".pgm");//Tenta carregar a imagem, caso retorne nulo, a imagem nao existe.
             if (imagemTemp == null)
               break;
             else{
@@ -109,7 +110,7 @@ class EP3{
                 System.out.println("Ação cancelada.O arquivo ainda não foi salvo");
             }
           }
-          if (!nomeNovo.equals("")){
+          if (!nomeNovo.equals("")){//Caso o usuário tenha apertado enter, a imagem não é gravada.
             nomeNovo = nomeNovo + ".pgm";
             LeituraEscritaImagem.escreveImagem(nomeNovo, minhaImagem);
             System.out.println("Imagem gravada com sucesso! Imagem salva como:"+nomeNovo);
