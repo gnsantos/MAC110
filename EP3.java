@@ -85,7 +85,7 @@ class EP3{
             nomeNovo = sc.nextLine();
             if (nomeNovo.equals(""))
               break;
-            Imagem imagemTemp = LeituraEscritaImagem.leImagem(nomeNovo);
+            Imagem imagemTemp = LeituraEscritaImagem.leImagem(nomeNovo+ ".pgm");
             if (imagemTemp == null)
               break;
             else{
